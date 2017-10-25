@@ -1,8 +1,25 @@
 <template>
-    <div class="test">
-        <h1 class="title is-1">{{ msg }}</h1>
-        <h6>{{ msg }}</h6>
+  <div class="test">
+    <a class="button is-success is-outlined modal-button" data-target="modal-ter">New Income</a>
+    <a class="button is-danger is-outlined">New Expense</a>
+
+    <div id="modal-ter" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Modal title</p>
+          <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <!-- Content ... -->
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success">Save changes</button>
+          <button class="button">Cancel</button>
+        </footer>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>

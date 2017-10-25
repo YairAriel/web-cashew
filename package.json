@@ -16,6 +16,7 @@
   "dependencies": {
     "bulma": "^0.5.2",
     "bulma-slider": "0.0.2",
+    "font-awesome": "^4.7.0",
     "vue": "^2.4.2",
     "vue-i18n": "^7.3.1",
     "vue-router": "^2.7.0"

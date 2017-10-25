@@ -1,3 +1,4 @@
 export default {
-  hello: 'שלום'
+  hello: 'שלום',
+  wow: 'וואו'
 }
