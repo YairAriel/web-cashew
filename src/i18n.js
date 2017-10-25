@@ -7,7 +7,7 @@ import en from '@/assets/strings/en'
 import he from '@/assets/strings/he'
 
 export default new VueI18n({
-  locale: 'he',
+  locale: 'en',
   messages: {
     en,
     he
