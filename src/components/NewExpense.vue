@@ -1,23 +1,29 @@
 <template>
-  <div class="newIncome">
+  <div class="newExpense">
     <div class="columns is-mobile">
       <div class="column is-1"></div>
       <div class="column is-10">
-        <h1 class="title is-2 is-spaced has-text-primary has-text-centered">NEW EXPENSE</h1>
+        <h1 class="title is-2 is-spaced has-text-danger has-text-centered">NEW EXPENSE</h1>
         <div class="field">
-          <p class="control">
+          <p class="control has-icons-left">
             <input class="input is-large" type="number" placeholder="Amount">
+            <span class="icon is-small is-left">
+              <i class="fa fa-usd"></i>
+            </span>
           </p>
         </div>
         <div class="field">
-          <p class="control">
-            <div class="select is-large">
+          <p class="control has-icons-left">
+            <span class="select is-large is-fullwidth">
               <select v-model="selected">
-                      <option v-for="(option, index) in options" v-bind:key="index">
-                          {{ option.text }}
-                      </option>
-                  </select>
-            </div>
+                <option v-for="(option, index) in options" v-bind:key="index">
+                  {{ option.text }}
+                </option>
+              </select>
+            </span>
+            <span class="icon is-small is-left">
+              <i class="fa fa-th-list"></i>
+            </span>
           </p>
         </div>
         <div class="field">
@@ -26,22 +32,29 @@
           </p>
         </div>
         <div class="field">
-          <div class="control">
-            <textarea class="textarea is-large" placeholder="Comments"></textarea>
-          </div>
+          <p class="control has-icons-left">
+            <input class="input is-large" type="text" placeholder="Comments">
+                <span class="icon is-small is-left">
+                  <i class="fa fa-pencil"></i>
+              </span>
+          </p>
         </div>
-        <a class="button is-danger is-large">
-          <span class="icon is-small">
-                <i class="fa fa-check"></i>
-              </span>
-          <span>ADD</span>
-        </a>
-        <a class="button is-light is-large">
-          <span class="icon is-small">
-                <i class="fa fa-times"></i>
-              </span>
-          <span>CANCEL</span>
-        </a>
+
+        <div class="buttons">
+          <a class="button is-primary is-large">
+            <span class="icon is-small">
+                  <i class="fa fa-check"></i>
+                </span>
+            <span>ADD</span>
+          </a>
+          <a class="button is-light is-large">
+            <span class="icon is-small">
+                  <i class="fa fa-times"></i>
+                </span>
+            <span>CANCEL</span>
+          </a>
+        </div>
+
       </div>
     </div>
     <div class="column is-1"></div>
@@ -96,5 +109,8 @@
   }
   .button {
     margin-top: 10%;
+  }
+  .control {
+    font-size: 0.2em
   }
 </style>
