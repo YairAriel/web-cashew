@@ -1,7 +1,7 @@
 <template>
   <div class="test">
     <a class="button is-success is-outlined modal-button">New Income</a>
-    <a v-on=click="expenseModal" class="button is-danger is-outlined">New Expense</a>
+    <a v-on:click="expenseModal" class="button is-danger is-outlined">New Expense</a>
 
     <div id="modal-ter" class="modal">
       <div class="modal-background"></div>
