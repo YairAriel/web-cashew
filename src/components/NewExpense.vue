@@ -4,19 +4,26 @@
       <div class="column is-1"></div>
       <div class="column is-10">
         <h1 class="title is-2 is-spaced has-text-danger has-text-centered">NEW EXPENSE</h1>
-        <div class="field">
+        <div class="field has-addons">
+          <p class="control has-icons-left">
+            <span class="select is-large">
+              <select id="pMethods">
+                  <option>&#xf0d6;</option>
+                  <option>&#xf09d;</option>
+                  <option>&#xf19c;</option>
+                  <option>&#xf044;</option>
+              </select>
+            </span>
+          </p>
           <p class="control has-icons-left">
             <input class="input is-large" type="number" placeholder="Amount">
-            <span class="icon is-small is-left">
-              <i class="fa fa-usd"></i>
-            </span>
           </p>
         </div>
         <div class="field">
           <p class="control has-icons-left">
             <span class="select is-large is-fullwidth">
-              <select v-model="selected">
-                <option v-for="(option, index) in options" v-bind:key="index">
+              <select v-model="selectedCategory">
+                <option v-for="(option, index) in categories" v-bind:key="index">
                   {{ option.text }}
                 </option>
               </select>
@@ -73,8 +80,8 @@
     data () {
       return {
         msg: $t('hello'),
-        selected: 'Category',
-        options: [{
+        selectedCategory: 'Category',
+        categories: [{
           text: 'Category',
           value: null
         },
@@ -94,6 +101,24 @@
           text: 'Helth',
           value: 'Helth'
         }
+        ],
+        defaultPayment: '&#xf0d6;',
+        paymentMethods: [{
+          text: '&#xf0d6;',
+          value: 'cash'
+        },
+        {
+          text: '&#xf09d;',
+          value: 'creditCard'
+        },
+        {
+          text: '&#xf19c;',
+          value: 'bankTransfer'
+        },
+        {
+          text: '&#xf044;',
+          value: 'check'
+        }
         ]
       }
     },
@@ -112,5 +137,8 @@
   }
   .control {
     font-size: 0.2em
+  }
+  #pMethods {
+    font-family: 'FontAwesome'
   }
 </style>

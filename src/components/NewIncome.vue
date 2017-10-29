@@ -15,8 +15,8 @@
         <div class="field">
           <p class="control has-icons-left">
             <span class="select is-large is-fullwidth">
-              <select v-model="selected">
-                <option v-for="(option, index) in options" v-bind:key="index">
+              <select v-model="selectedSource">
+                <option v-for="(option, index) in sources" v-bind:key="index">
                   {{ option.text }}
                 </option>
               </select>
@@ -75,8 +75,8 @@
     data () {
       return {
         msg: $t('hello'),
-        selected: 'Source',
-        options: [{
+        selectedSource: 'Source',
+        sources: [{
           text: 'Source',
           value: null
         },
