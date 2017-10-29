@@ -7,11 +7,10 @@
         <div class="field has-addons">
           <p class="control has-icons-left">
             <span class="select is-large">
-              <select id="pMethods">
-                  <option>&#xf0d6;</option>
-                  <option>&#xf09d;</option>
-                  <option>&#xf19c;</option>
-                  <option>&#xf044;</option>
+              <select id="pMethods" v-model="selected">
+                <option v-for="(option, index) in paymentMethods" v-bind:key="index">
+                  {{ option.text }}
+                </option>
               </select>
             </span>
           </p>
