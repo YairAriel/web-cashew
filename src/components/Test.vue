@@ -2,7 +2,7 @@
   <div class="test">
     <a class="button is-success is-outlined modal-button">New Income</a>
     <a v-on:click="expenseModal" class="button is-danger is-outlined">New Expense</a>
-
+    <input type="number" pattern="[0-9]*" inputmode="numeric" >
     <div id="modal-ter" class="modal">
       <div class="modal-background"></div>
       <div class="modal-card">

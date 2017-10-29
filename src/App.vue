@@ -13,6 +13,7 @@ export default {
 <style lang="sass">
 @import 'node_modules/bulma/bulma'
 @import 'node_modules/bulma-extensions/bulma-calendar/calendar'
+@import 'node_modules/bulma-extensions/bulma-divider/divider'
 @import 'node_modules/bulma-slider/slider'
 </style>
 

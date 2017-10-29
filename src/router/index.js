@@ -5,6 +5,8 @@ import Calendar from '@/components/Calendar'
 import Test from '@/components/Test'
 import NewIncome from '@/components/NewIncome'
 import NewExpense from '@/components/NewExpense'
+import Transaction from '@/components/Transaction'
+import TransactionTable from '@/components/TransactionTable'
 
 Vue.use(Router)
 
@@ -34,6 +36,16 @@ export default new Router({
       path: '/newexpense',
       name: 'NewExpense',
       component: NewExpense
+    },
+    {
+      path: '/transaction',
+      name: 'Transaction',
+      component: Transaction
+    },
+    {
+      path: '/transaction-table',
+      name: 'Transactions',
+      component: TransactionTable
     }
   ]
 })

@@ -42,6 +42,8 @@
 
 <script>
 import i18n from '@/i18n'
+// import {Income, Expense} from '@/assets/javascript/transaction'
+
 const $t = i18n.t.bind(i18n)
 
 export default {

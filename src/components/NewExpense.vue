@@ -8,8 +8,7 @@
           <p class="control has-icons-left">
             <span class="select is-large">
               <select id="pMethods" v-model="selected">
-                <option v-for="(option, index) in paymentMethods" v-bind:key="index">
-                  {{ option.text }}
+                <option v-for="(option, index) in paymentMethods" v-bind:key="index" v-html="option.text">
                 </option>
               </select>
             </span>
