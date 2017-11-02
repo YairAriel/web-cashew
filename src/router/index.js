@@ -7,6 +7,7 @@ import NewIncome from '@/components/NewIncome'
 import NewExpense from '@/components/NewExpense'
 import Transaction from '@/components/Transaction'
 import TransactionTable from '@/components/TransactionTable'
+import AllTransactions from '@/components/AllTransactions'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
       path: '/transaction-table',
       name: 'Transactions',
       component: TransactionTable
+    },
+    {
+      path: '/all-transactions',
+      name: 'AllTransactions',
+      component: AllTransactions
     }
   ]
 })
