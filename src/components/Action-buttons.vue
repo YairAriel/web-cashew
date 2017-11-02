@@ -26,7 +26,7 @@ export default {
     display: flex;
     justify-content: flex-end;
     width: 100%;
-    transform: translate(-5%, -18rem);
+    transform: translate(-2%, -17rem);
     z-index: -1;
   }
   .is-action{
