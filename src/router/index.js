@@ -6,7 +6,7 @@ import Test from '@/components/Test'
 import NewIncome from '@/components/NewIncome'
 import NewExpense from '@/components/NewExpense'
 import Transaction from '@/components/Transaction'
-import TransactionTable from '@/components/TransactionTable'
+import TransactionTable from '@/components/Transaction-table'
 
 Vue.use(Router)
 

@@ -1,11 +1,11 @@
 <template>
-  <tr :class="'transaction box is-table-row is-' + type">
+  <tr :class="'transaction box is-table-row is-' + type + ' ' + someStyle">
     <!-- <div class="has-no-vpadding columns is-narrow is-mobile is-marginless has-elements-centered"> -->
     <!-- <tr class=""> -->
     <td class="has-less-hpadding">
       <span class="icon is-medium">
-              <i :class="'fa fa-2x ' + icons[transactionType.category]"></i>
-            </span>
+                <i :class="'fa fa-2x ' + icons[transactionType.category]"></i>
+              </span>
     </td>
     <td class="is-divider-vertical has-no-hpadding"></td>
     <td class="has-less-hpadding">
@@ -18,6 +18,12 @@
     <td class="is-divider-vertical has-no-hpadding"></td>
     <td class="has-less-hpadding">
       <p :class="'is-size-7-mobile is-' + type + '-amount'">{{ formatAmount }}</p>
+    </td>
+    <td class="is-divider-vertical has-no-hpadding"></td>
+    <td class="has-less-hpadding">
+      <span class="icon button">
+        <i class="fa fa-pencil"></i>
+      </span>
     </td>
     <!-- </tr> -->
     <!-- </div> -->
@@ -33,6 +39,9 @@
     props: {
       transactionType: {
         type: Object
+      },
+      someStyle: {
+        type: String
       }
     },
     data () {
@@ -57,6 +66,21 @@
 </script>
 
 <style scoped>
+  .up-first{
+    animation: pull-up-first 250ms linear;
+  }
+  .up{
+    animation: pull-up 250ms linear;
+  }
+  .down{
+    animation: pull-down 250ms linear;
+  }
+  .down-last{
+    animation: pull-down-last 250ms linear;
+  }
+  .scroll-anim{
+    animation: scroll  500ms linear;
+  }
   .is-income {
     background-color: rgba(35, 210, 96, 0.2);
   }

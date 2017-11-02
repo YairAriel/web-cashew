@@ -37,12 +37,16 @@
     </ul>
 
     <input class="slider" step="1" min="0" max="100" value="50" type="range">
+    <div class="test">
+      <transaction-table></transaction-table>
+    </div>
   </div>
 </template>
 
 <script>
 import i18n from '@/i18n'
 // import {Income, Expense} from '@/assets/javascript/transaction'
+import TransactionTable from '@/components/Transaction-table'
 
 const $t = i18n.t.bind(i18n)
 
@@ -53,6 +57,9 @@ export default {
     return {
       msg: $t('hello')
     }
+  },
+  components: {
+    TransactionTable
   }
 }
 </script>
@@ -76,5 +83,11 @@ li {
 
 a {
   color: #42b983;
+}
+.test{
+  overflow: hidden;
+  max-width: 500px;
+  max-height: 500px;
+  border: 5px solid blue;
 }
 </style>
