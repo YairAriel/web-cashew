@@ -50,15 +50,25 @@
   import Transaction from '@/components/Transaction.vue'
   import ActionButtons from '@/components/Action-buttons.vue'
   const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry'
+  const saftySpase = 30
   const headerCells = 9
   const transactionArray = []
+  for (let i = 0; i < 50; i += 2) {
+    transactionArray[i] = new Income(i, i * 1000, new Date(), dummyText, 'cash', 'salary')
+    transactionArray[i + 1] = new Expense(i + 1, (i + 1) * 1000, new Date(), dummyText, 'cash', 'rent')
+  }
   let touchDownY
   let touchUpY
-  for (let i = 0; i < 50; i += 2) {
-    transactionArray[i] = new Income(i, i, new Date(), dummyText, 'cash', 'salary')
-    transactionArray[i + 1] = new Expense(i + 1, i + 1, new Date(), dummyText, 'cash', 'rent')
+  const scrollAnim = {
+    up: 'up',
+    down: 'down',
+    upFirst: 'up-first',
+    downLast: 'down-last',
+    animTimeMs: 500,
+    typeTouch: 'touch',
+    typeWheel: 'wheel'
   }
-  console.log(transactionArray)
+
   export default {
     name: 'transaction-table',
     components: {
@@ -74,51 +84,60 @@
         transactions: null,
         rows: null,
         style: null,
-        someClass: null,
-        firstClass: null,
-        lastClass: null
+        someClass: '',
+        firstClass: '',
+        lastClass: ''
       }
     },
     methods: {
       wheelScroll (e) {
-        this.smoothScroll(e.deltaY)
+        const delta = {type: scrollAnim.typeWheel, y: e.deltaY}
+        this.scrollEndAnim(delta)
       },
       touchStart (e) {
         touchDownY = e.touches[0].clientY
       },
       touchEnd (e) {
         touchUpY = e.changedTouches[0].clientY
-        this.smoothScroll(touchDownY - touchUpY)
+        const delta = {type: scrollAnim.typeTouch, y: touchDownY - touchUpY}
+        this.scrollEndAnim(delta)
       },
-      smoothScroll (deltaY) {
-        if (this.rows.scrollTop === 0 && deltaY < 0) {
-          this.someClass = 'up'
-          this.lastClass = 'up'
-          this.firstClass = 'up-first'
-          setTimeout(() => {
-            this.someClass = null
-            this.firstClass = null
-            this.lastClass = null
-          }, 500)
-          return
-        }
+      setAnim (firstClass, someClass, lastClass) {
+        this.firstClass = firstClass
+        this.someClass = someClass
+        this.lastClass = lastClass
+      },
+      scrollEndAnim (delta) {
         const transBody = document.querySelector('.is-trans-body')
-        if (this.rows.scrollTop + this.rows.offsetHeight >= transBody.offsetHeight && deltaY > 0) {
-          this.someClass = 'down'
-          this.firstClass = 'down'
-          this.lastClass = 'down-last'
-          setTimeout(() => {
-            this.someClass = null
-            this.firstClass = null
-            this.lastClass = null
-          }, 1000)
+        if (this.rows.scrollTop === 0 && delta.y < 0) {
+          switch (delta.type) {
+            case scrollAnim.typeTouch:
+              this.setAnim(scrollAnim.down, scrollAnim.down, scrollAnim.down)
+              break
+            case scrollAnim.typeWheel:
+              this.setAnim(scrollAnim.upFirst, scrollAnim.up, scrollAnim.up)
+              break
+          }
+        } else if (this.rows.scrollTop + this.rows.offsetHeight >= transBody.offsetHeight && delta.y > 0) {
+          switch (delta.type) {
+            case scrollAnim.typeTouch:
+              this.setAnim(scrollAnim.up, scrollAnim.up, scrollAnim.up)
+              break
+            case scrollAnim.typeWheel:
+              this.setAnim(scrollAnim.down, scrollAnim.down, scrollAnim.downLast)
+              break
+          }
+        } else {
           return
         }
+        setTimeout(this.setAnim, scrollAnim.animTimeMs, '', '', '')
       },
       steakyHeader () {
         const stickyHeader = document.querySelector('.is-sticky')
+        const stickyPosY = stickyHeader.getBoundingClientRect().top
         const tranContParentHeight = this.tranCont.parentElement.offsetHeight
-        const height = tranContParentHeight + 'px'
+        const innerHight = window.innerHeight - stickyPosY - saftySpase
+        const height = tranContParentHeight < innerHight ? tranContParentHeight + 'px' : innerHight + 'px'
         this.tranCont.style.maxHeight = this.rows.style.maxHeight = height
         this.rows.style.maxHeight = this.tranCont.innerHeight + 'px'
         stickyHeader.style.left = this.transactions.offsetLeft + 'px'
@@ -159,6 +178,7 @@
     min-height: 100%;
     margin: 0;
     padding: 0;
+    z-index: 100;
   }
   .transactions{
     max-width: calc(100% - 6rem);
@@ -189,7 +209,6 @@
     display: block;
     margin: 0;
     position: relative;
-    z-index: 999;
   }
   .sticky-header{
     margin: 0;
@@ -198,7 +217,6 @@
     top: 0;
     min-width:100%;
     width: 100%;
-    z-index: 998;
     background-color: #4C4C4C;
   }
 </style>

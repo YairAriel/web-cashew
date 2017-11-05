@@ -20,14 +20,7 @@
         </modal>
       </select>
     </div>
-    <div class="columns is-mobile">
-        <div class="column is-1"></div>
-        <div class="column is-10">
-          <div class="table">
-            <transaction-table></transaction-table>
-          </div>
-        </div>
-        <div class="column is-1"></div>
+    <transaction-table></transaction-table>
     </div>
   </div>
 </template>
@@ -129,6 +122,9 @@
   }
   hr {
     border: 1px solid #92969b;
+  }
+  .trans-wraper{
+    max-height: max-content;
   }
 </style>
 

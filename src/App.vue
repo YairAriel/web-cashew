@@ -98,4 +98,10 @@ export default {
     max-height: 100%;
     height: 100%;
   }
+  div, span, i, td, th{
+    -webkit-user-select: none; /* Chrome, Opera, Safari */
+    -moz-user-select: none; /* Firefox 2+ */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Standard syntax */
+  }
 </style>

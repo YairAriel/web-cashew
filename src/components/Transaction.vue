@@ -95,6 +95,10 @@
   }
   .is-table-row {
     display: table-row !important;
+    border-radius: inherit;
+  }
+  .is-table-row:hover {
+    cursor: pointer;
   }
   .is-marginless {
     margin: 0;

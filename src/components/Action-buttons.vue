@@ -22,12 +22,11 @@ export default {
 <style scoped>
 .action-buttons{
     position: relative;
-    padding: 5rem;
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    transform: translate(-2%, -17rem);
-    z-index: -1;
+    display: inline-flex;
+    transform: translateY(-12rem);
+    z-index: 100;
+    margin-right: calc(100% - 10rem);
+    margin-left: calc(100% - 10rem);
   }
   .is-action{
     position: relative;
@@ -35,13 +34,12 @@ export default {
     padding: 0.5rem !important;
     border-radius: 100%;
     margin: 0.25rem;
-    z-index: 999 !important;
   }
   .is-add-income{
-    background-color:rgb(35, 210, 96);
+    background-color:rgba(35, 210, 96, 100);
   }
   .is-add-expense{
-    background-color: rgb(255, 56, 96);
+    background-color: rgba(255, 56, 96, 100);
   }
   .is-action:hover{
     cursor: pointer;
