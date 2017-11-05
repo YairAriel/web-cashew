@@ -203,7 +203,7 @@
 
   .sticky{
     display: inline-block;
-    line-height: 4rem;
+    line-height: 2rem;
   }
   .is-sticky{
     display: block;
